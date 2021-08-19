@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.mesttra.financial.util.Message;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,14 +17,14 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ExpenseResquestDto {
 
-	@NotBlank(message = "Campo não pode ser vazio ou null")
-	@NotNull(message = "Campo não pode ser vazio ou null")
+	@NotBlank(message = Message.FIELD_REQUIRED)
+	@NotNull(message = Message.FIELD_REQUIRED)
     private String expenseType;
 	
-	@NotNull(message = "Campo não pode ser vazio ou null")
+	@NotNull(message = Message.FIELD_REQUIRED)
     private Double amount;
 
-	@NotNull(message = "Campo não pode ser vazio ou null. Formato: YYYY-MM-DD")
+	@NotNull(message = Message.FIELD_REQUIRED + Message.DATE_FORMATTER)
     private LocalDate dueDate;
 
 }

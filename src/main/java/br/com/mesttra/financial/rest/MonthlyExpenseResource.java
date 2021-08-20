@@ -19,15 +19,20 @@ import br.com.mesttra.financial.exception.ValidationException;
 import br.com.mesttra.financial.service.MonthlyExpenseService;
 import br.com.mesttra.financial.util.Constantes;
 import br.com.mesttra.financial.util.Util;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value=Constantes.PATH_FINANCIAL, produces = MediaType.APPLICATION_JSON_VALUE)
+@Api(value = Constantes.PATH_FINANCIAL, produces = MediaType.APPLICATION_JSON_VALUE, tags = { Constantes.TAG_FINANCIAL })
 public class MonthlyExpenseResource {
 	
 	@Autowired
 	private MonthlyExpenseService service;
 	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@ApiOperation(value = Constantes.ADD_EXPENSE, 
+	notes = Constantes.ADD_EXPENSE_NOTES, response = ExpenseResponseDto.class)
 	public @ResponseBody ResponseEntity<?> addExpense(@Valid @RequestBody ExpenseResquestDto request) 
 			throws ValidationException {
 		

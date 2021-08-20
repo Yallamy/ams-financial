@@ -1,4 +1,6 @@
 server.error.whitelabel.enabled: true
+server.servlet.context-path: /microservices
+
 server:
     port: 8080
     connection-timeout: 30000

@@ -1,5 +1,6 @@
 server.error.whitelabel.enabled: true
 server.servlet.context-path: /microservices
+logging.level.org.springframework.web: TRACE
 
 server:
     port: 8080

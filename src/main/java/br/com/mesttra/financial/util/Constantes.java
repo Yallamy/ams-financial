@@ -11,8 +11,10 @@ public class Constantes {
 	//SWAGGER
 	//SERVICES
 	public static final String ADD_EXPENSE = "Add a expense";
+	public static final String LIST_EXPENSE = "List of expenses";
 	
 	public static final String ADD_EXPENSE_NOTES = "Add a expense to financial";
+	public static final String LIST_EXPENSE_NOTES = "List of expenses according to criteria";
 	
 	//DTOs
 	public static final String EXPENSE_REQUEST_DTO = "Expense request";
@@ -32,6 +34,14 @@ public class Constantes {
 	public static final String RESPONSE_AMOUNT_DTO = "Expense amount";
 	
 	public static final String RESPONSE_DUE_DATE_DTO = "Date of the expense in the formatter YYYY-MM-DD";
+	
+	public static final String REQUEST_EXPENSE_LIST_ID_DTO = "Id of the expense";
+	
+	public static final String REQUEST_EXPENSE_TYPE_LIST_DTO = "Expense type";
+	
+	public static final String REQUEST_AMOUNT_LIST_DTO = "Expense amount";
+	
+	public static final String REQUEST_DUE_DATE_LIST_DTO = "Date of the expense in the formatter YYYY-MM-DD";
 	
 
 }

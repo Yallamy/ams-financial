@@ -1,4 +1,4 @@
-package br.com.mesttra.financial.rest;
+package br.com.mesttra.financial.resource;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -13,7 +13,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.mesttra.financial.dto.ExpenseRequestListDTO;
 import br.com.mesttra.financial.dto.ExpenseResponseDto;
 import br.com.mesttra.financial.dto.ExpenseResquestDto;
 import br.com.mesttra.financial.entity.MonthlyExpense;
@@ -56,6 +54,7 @@ public class MonthlyExpenseResource {
 		return new ResponseEntity<ExpenseResponseDto>(response, HttpStatus.OK);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@ApiOperation(value = Constantes.LIST_EXPENSE, 
 		notes = Constantes.LIST_EXPENSE_NOTES, response = ExpenseResponseDto.class)
@@ -75,7 +74,9 @@ public class MonthlyExpenseResource {
 				.dueDate(dueDate.orElse(null))
 				.build();
 		
-		Page<MonthlyExpense> response = this.service.list(monthlyExpense, pageable);
+		Page<MonthlyExpense> expenses = this.service.list(monthlyExpense, pageable);
+		Page<ExpenseResponseDto> response = Page.empty();
+		response = Util.convertModelMapper(expenses, response.getClass());
 		
 		return ResponseEntity.ok(response);
 	}
